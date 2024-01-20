@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+    <table cellpadding="15">
+       <div><h1>Покупка курса валют</h1>
+     <tr>
+        <td>Введите сумму:</td>
+        <td></td>
+        <td>KZT(Тенге)</td>
+        <td>USD(Доллар)</td>
+        <td>EURO(Евро)</td>
+     </tr>
+     <tr>
+        <td><input type="" id="Summa" onchange="check()"> </td>
+        <td><select id="convert" onchange="check()">
+          <option value="KZT">Тенге</option>
+          <option value="USD">Доллар</option>
+          <option value="EURO">Евро</option>
+        </select> 
+        </td>
+        <td>
+            <input class="form-control" id="KZT" readonly>
+        </td>
+        <td>
+            <input class="form-control" id="USD" readonly>
+        </td>
+        <td>
+            <input class="form-control" id="EURO" readonly>
+        </td>
+     </tr>
+    </div> 
+    </table>
+    <div>
+        <table cellpadding="15">
+     <h1>Продажа курса валют</h1>
+     <tr>
+        <td>Введите сумму:</td>
+        <td></td>
+        <td>KZT(Тенге)</td>
+        <td>USD(Доллар)</td>
+        <td>EURO(Евро)</td>
+     </tr>
+     <tr>
+        <td><input type="" id="Summaby" onchange="check()"> </td>
+        <td><select id="convertby" onchange="check()">
+          <option value="KZT">Тенге</option>
+          <option value="USD">Доллар</option>
+          <option value="EURO">Евро</option>
+        </select> 
+        </td>
+        <td>
+            <input class="form-control" id="KZTby" readonly>
+        </td>
+        <td>
+            <input class="form-control" id="USDby" readonly>
+        </td>
+        <td>
+            <input class="form-control" id="EUROby" readonly>
+        </td>
+     </tr>
+    </div>
+    </table>
+</div>
+</body>
+    <script>
+        function check(){
+            let Summa=document.getElementById("Summa").value;
+            let x=document.getElementById("convert").value;
+            let Summaby=document.getElementById("Summaby").value;
+            let y=document.getElementById("convertby").value;
+            let dollar=429;
+            let EURO=507;
+            let bydollar=431;
+            let byEuro=509;
+            let resultDollar;
+            let resultEuro;
+            let resultTenge;
+            let resultDollarby;
+            let resultEuroby;
+            let resultTengeby;
+            if (x==="KZT"){
+                resultDollar=(Summa/dollar).toFixed(2);
+                resultEuro=(Summa/EURO).toFixed(2);
+                document.getElementById("USD").value=resultDollar;
+                document.getElementById("EURO").value=resultEuro;
+                document.getElementById("KZT").value="0";
+            } else if (x==="EURO"){
+                resultTenge=(Summa*EURO);
+                resultDollar=(resultTenge/dollar).toFixed(2);
+                document.getElementById("KZT").value=resultTenge;
+                document.getElementById("USD").value=resultDollar;
+                document.getElementById("EURO").value="0";
+            }else if(x==="USD"){
+                resultTenge=(Summa*dollar);
+                resultEuro=(resultTenge/EURO).toFixed(2);
+                document.getElementById("KZT").value=resultTenge;
+                document.getElementById("USD").value="0";
+                document.getElementById("EURO").value=resultEuro;
+            }
+            if(y==="KZT"){
+                resultDollarby=(Summaby/bydollar).toFixed(2);
+                resultEuroby=(Summaby/byEuro).toFixed(2);
+                document.getElementById("USDby").value=resultDollarby;
+                document.getElementById("EUROby").value=resultEuroby;
+                document.getElementById("KZTby").value="0";
+            }else if (y==="EURO") {
+                resultTengeby=(Summaby*byEuro);
+                resultDollarby=(resultTengeby/bydollar).toFixed(2);
+                document.getElementById("KZTby").value=resultTengeby;
+                document.getElementById("USDby").value=resultDollarby;
+                document.getElementById("EUROby").value="0";
+            }else if (y==="USD"){
+                resultTengeby=(Summaby*bydollar);
+                resultEuroby=(resultTengeby/byEuro).toFixed(2);
+                document.getElementById("KZTby").value=resultTengeby;
+                document.getElementById("USDby").value="0";
+                document.getElementById("EUROby").value=resultEuroby;
+            }
+        }
+    </script>
+</html>
